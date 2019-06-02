@@ -14,12 +14,16 @@ import io.netty.handler.codec.http.HttpServerCodec;
  * @version 1.0
  * @date 2019/6/1
  */
-public class ServerInitializer extends ChannelInitializer<SocketChannel> {
+public class HttpServerInitializer extends ChannelInitializer<SocketChannel> {
     @Override
-    protected void initChannel(SocketChannel ch) throws Exception {
+    protected void initChannel(SocketChannel ch) {
 
         ChannelPipeline pipeline = ch.pipeline();
+
+        //传递netty的Handler
         pipeline.addLast("httpServerCodec", new HttpServerCodec());
+
+        //传递自己定义的Handler
         pipeline.addLast("HttpServerHandler", new HttpServerHandler());
 
     }

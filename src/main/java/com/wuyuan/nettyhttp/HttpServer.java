@@ -13,7 +13,7 @@ import io.netty.channel.socket.nio.NioServerSocketChannel;
  * @version 1.0
  * @date 2019/6/1
  */
-public class Server {
+public class HttpServer {
     public static void main(String[] args) throws Exception {
         /*
          * 两个事件循环组(* 死循环 ==>> while(true){} *):
@@ -33,7 +33,7 @@ public class Server {
             ServerBootstrap sbs = new ServerBootstrap();
             sbs.group(bossGroup,workerGroup)
                     .channel(NioServerSocketChannel.class)
-                    .childHandler(new ServerInitializer());
+                    .childHandler(new HttpServerInitializer());
 
             ChannelFuture channelFuture = sbs.bind(8088).sync();
             channelFuture.channel().closeFuture().sync();

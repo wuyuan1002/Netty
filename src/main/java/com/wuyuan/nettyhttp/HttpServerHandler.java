@@ -37,8 +37,14 @@ public class HttpServerHandler extends SimpleChannelInboundHandler<HttpObject> {
 
             System.out.println("请求方法名："+httpRequest.method().name());
             URI uri = new URI(httpRequest.uri());
-            if ("/wuyuan".equals(uri.getPath())){
+            if ("/findAllUser".equals(uri.getPath())){
                 System.out.println("请求访问了wuyuan");
+            }
+            if ("/deleteUser".equals(uri.getPath())){
+                System.out.println("请求访问了deleteUser");
+            }
+            if ("/updateUser".equals(uri.getPath())){
+                System.out.println("请求访问了updateUser");
             }
 
 
@@ -82,7 +88,15 @@ public class HttpServerHandler extends SimpleChannelInboundHandler<HttpObject> {
         super.channelUnregistered(ctx);
     }
 
-
-
-
+    /**
+     *发生异常调用该方法
+     */
+    @Override
+    public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) throws Exception {
+        /*
+         * 把连接关闭掉
+         */
+        cause.printStackTrace();
+        ctx.close();
+    }
 }
