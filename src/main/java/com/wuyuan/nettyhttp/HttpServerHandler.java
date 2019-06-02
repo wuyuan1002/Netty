@@ -1,4 +1,4 @@
-package com.wuyuan.netty;
+package com.wuyuan.nettyhttp;
 
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;
