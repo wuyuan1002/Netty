@@ -16,7 +16,8 @@ import io.netty.channel.socket.nio.NioServerSocketChannel;
 public class Server {
     public static void main(String[] args) throws Exception {
         /*
-         * 两个事件循环组(* 死循环 ->> while(true){} *):
+         * 两个事件循环组(* 死循环 ==>> while(true){} *):
+         *
          *  bossGroup只是监听客户端连接，监听到后直接交给workerGroup
          *  bossGroup什么都不做，只是监听连接，workerGroup真正进行连接参数的获取和事件的处理和返回结果给客户端的工作
          *
