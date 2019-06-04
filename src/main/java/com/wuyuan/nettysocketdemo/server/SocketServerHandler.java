@@ -24,7 +24,7 @@ public class SocketServerHandler extends SimpleChannelInboundHandler<String> {
     }
 
     /**
-     *发生异常调用该方法
+     * 发生异常调用该方法
      */
     @Override
     public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) throws Exception {

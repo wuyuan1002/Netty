@@ -130,6 +130,11 @@ public class HttpServerHandler extends SimpleChannelInboundHandler<HttpObject> {
         super.channelUnregistered(ctx);
     }
 
+    @Override
+    public void handlerRemoved(ChannelHandlerContext ctx) throws Exception {
+        System.out.println("handler removed --- 方法被调用");
+    }
+
     /**
      * 发生异常调用该方法
      */
