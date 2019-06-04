@@ -31,30 +31,72 @@ public class HttpServerHandler extends SimpleChannelInboundHandler<HttpObject> {
     protected void messageReceived(ChannelHandlerContext ctx, HttpObject msg) throws Exception {
 
         if (msg instanceof HttpRequest) {
-            System.out.println("----- 请求来了 -----");
-            HttpRequest httpRequest = (HttpRequest)msg;
+            System.out.println("----- 请求来了 messageReceived --- 方法被调用-----");
+            HttpRequest httpRequest = (HttpRequest) msg;
 
 
-            System.out.println("请求方法名："+httpRequest.method().name());
+            System.out.println("请求方法名：" + httpRequest.method().name());
+
+            //得到访问路径，根据访问路径进行不同的操作
             URI uri = new URI(httpRequest.uri());
-            if ("/findAllUser".equals(uri.getPath())){
-                System.out.println("请求访问了wuyuan");
-            }
-            if ("/deleteUser".equals(uri.getPath())){
+            if ("/findAllUser".equals(uri.getPath())) {
+
+                System.out.println("请求访问了findAllUser");
+
+                //设置返回数据内容
+                ByteBuf content = Unpooled.copiedBuffer("Hello World findAllUser", CharsetUtil.UTF_8);
+                //设置response的各种属性
+                FullHttpResponse response = new DefaultFullHttpResponse(HttpVersion.HTTP_1_1, HttpResponseStatus.OK, content);
+                response.headers().set(HttpHeaderNames.CONTENT_TYPE, "test/plain");
+                response.headers().set(HttpHeaderNames.CONTENT_LENGTH, String.valueOf(content.readableBytes()));
+
+                //将response返回
+                ctx.writeAndFlush(response);
+
+            } else if ("/deleteUser".equals(uri.getPath())) {
+
                 System.out.println("请求访问了deleteUser");
-            }
-            if ("/updateUser".equals(uri.getPath())){
+
+                //设置返回内容
+                ByteBuf content = Unpooled.copiedBuffer("Hello World deleteUser", CharsetUtil.UTF_8);
+                //设置response的各种属性
+                FullHttpResponse response = new DefaultFullHttpResponse(HttpVersion.HTTP_1_1, HttpResponseStatus.OK, content);
+                response.headers().set(HttpHeaderNames.CONTENT_TYPE, "test/plain");
+                response.headers().set(HttpHeaderNames.CONTENT_LENGTH, String.valueOf(content.readableBytes()));
+
+                //将response返回
+                ctx.writeAndFlush(response);
+
+            } else if ("/updateUser".equals(uri.getPath())) {
+
                 System.out.println("请求访问了updateUser");
+
+                //设置返回内容
+                ByteBuf content = Unpooled.copiedBuffer("Hello World updateUser", CharsetUtil.UTF_8);
+                //设置response的各种属性
+                FullHttpResponse response = new DefaultFullHttpResponse(HttpVersion.HTTP_1_1, HttpResponseStatus.OK, content);
+                response.headers().set(HttpHeaderNames.CONTENT_TYPE, "test/plain");
+                response.headers().set(HttpHeaderNames.CONTENT_LENGTH, String.valueOf(content.readableBytes()));
+
+                //将response返回
+                ctx.writeAndFlush(response);
+
+            } else {
+                //设置返回内容
+                ByteBuf content = Unpooled.copiedBuffer("Hello World", CharsetUtil.UTF_8);
+                //设置response的各种属性
+                FullHttpResponse response = new DefaultFullHttpResponse(HttpVersion.HTTP_1_1, HttpResponseStatus.OK, content);
+                response.headers().set(HttpHeaderNames.CONTENT_TYPE, "test/plain");
+                response.headers().set(HttpHeaderNames.CONTENT_LENGTH, String.valueOf(content.readableBytes()));
+
+                //将response返回
+                ctx.writeAndFlush(response);
+
             }
 
+            System.out.println("-----------------------------------------");
 
-            ByteBuf content = Unpooled.copiedBuffer("Hello World", CharsetUtil.UTF_8);
-            FullHttpResponse response = new DefaultFullHttpResponse(HttpVersion.HTTP_1_1, HttpResponseStatus.OK, content);
 
-            response.headers().set(HttpHeaderNames.CONTENT_TYPE, "test/plain");
-            response.headers().set(HttpHeaderNames.CONTENT_LENGTH, String.valueOf(content.readableBytes()));
-
-            ctx.writeAndFlush(response);
         }
     }
 
@@ -89,7 +131,7 @@ public class HttpServerHandler extends SimpleChannelInboundHandler<HttpObject> {
     }
 
     /**
-     *发生异常调用该方法
+     * 发生异常调用该方法
      */
     @Override
     public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) throws Exception {
