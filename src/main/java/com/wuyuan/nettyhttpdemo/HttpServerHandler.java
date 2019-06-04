@@ -16,9 +16,9 @@ import io.netty.util.CharsetUtil;
 import java.net.URI;
 
 /**
- * Í¨µÀ´¦ÀíÆ÷
+ * é€šé“å¤„ç†å™¨
  *
- * ¶¨Òå·µ»ØÊı¾İ£¬°ÑÊı¾İ·µ»Ø¸ø¿Í»§¶Ë
+ * å®šä¹‰è¿”å›æ•°æ®ï¼ŒæŠŠæ•°æ®è¿”å›ç»™å®¢æˆ·ç«¯
  *
  * @author wuyuan
  * @version 1.0
@@ -31,65 +31,65 @@ public class HttpServerHandler extends SimpleChannelInboundHandler<HttpObject> {
     protected void messageReceived(ChannelHandlerContext ctx, HttpObject msg) throws Exception {
 
         if (msg instanceof HttpRequest) {
-            System.out.println("----- ÇëÇóÀ´ÁË messageReceived --- ·½·¨±»µ÷ÓÃ-----");
+            System.out.println("----- è¯·æ±‚æ¥äº† messageReceived --- æ–¹æ³•è¢«è°ƒç”¨-----");
             HttpRequest httpRequest = (HttpRequest) msg;
 
 
-            System.out.println("ÇëÇó·½·¨Ãû£º" + httpRequest.method().name());
+            System.out.println("è¯·æ±‚æ–¹æ³•åï¼š" + httpRequest.method().name());
 
-            //µÃµ½·ÃÎÊÂ·¾¶£¬¸ù¾İ·ÃÎÊÂ·¾¶½øĞĞ²»Í¬µÄ²Ù×÷
+            //å¾—åˆ°è®¿é—®è·¯å¾„ï¼Œæ ¹æ®è®¿é—®è·¯å¾„è¿›è¡Œä¸åŒçš„æ“ä½œ
             URI uri = new URI(httpRequest.uri());
             if ("/findAllUser".equals(uri.getPath())) {
 
-                System.out.println("ÇëÇó·ÃÎÊÁËfindAllUser");
+                System.out.println("è¯·æ±‚è®¿é—®äº†findAllUser");
 
-                //ÉèÖÃ·µ»ØÊı¾İÄÚÈİ
+                //è®¾ç½®è¿”å›æ•°æ®å†…å®¹
                 ByteBuf content = Unpooled.copiedBuffer("Hello World findAllUser", CharsetUtil.UTF_8);
-                //ÉèÖÃresponseµÄ¸÷ÖÖÊôĞÔ
+                //è®¾ç½®responseçš„å„ç§å±æ€§
                 FullHttpResponse response = new DefaultFullHttpResponse(HttpVersion.HTTP_1_1, HttpResponseStatus.OK, content);
                 response.headers().set(HttpHeaderNames.CONTENT_TYPE, "test/plain");
                 response.headers().set(HttpHeaderNames.CONTENT_LENGTH, String.valueOf(content.readableBytes()));
 
-                //½«response·µ»Ø
+                //å°†responseè¿”å›
                 ctx.writeAndFlush(response);
 
             } else if ("/deleteUser".equals(uri.getPath())) {
 
-                System.out.println("ÇëÇó·ÃÎÊÁËdeleteUser");
+                System.out.println("è¯·æ±‚è®¿é—®äº†deleteUser");
 
-                //ÉèÖÃ·µ»ØÄÚÈİ
+                //è®¾ç½®è¿”å›å†…å®¹
                 ByteBuf content = Unpooled.copiedBuffer("Hello World deleteUser", CharsetUtil.UTF_8);
-                //ÉèÖÃresponseµÄ¸÷ÖÖÊôĞÔ
+                //è®¾ç½®responseçš„å„ç§å±æ€§
                 FullHttpResponse response = new DefaultFullHttpResponse(HttpVersion.HTTP_1_1, HttpResponseStatus.OK, content);
                 response.headers().set(HttpHeaderNames.CONTENT_TYPE, "test/plain");
                 response.headers().set(HttpHeaderNames.CONTENT_LENGTH, String.valueOf(content.readableBytes()));
 
-                //½«response·µ»Ø
+                //å°†responseè¿”å›
                 ctx.writeAndFlush(response);
 
             } else if ("/updateUser".equals(uri.getPath())) {
 
-                System.out.println("ÇëÇó·ÃÎÊÁËupdateUser");
+                System.out.println("è¯·æ±‚è®¿é—®äº†updateUser");
 
-                //ÉèÖÃ·µ»ØÄÚÈİ
+                //è®¾ç½®è¿”å›å†…å®¹
                 ByteBuf content = Unpooled.copiedBuffer("Hello World updateUser", CharsetUtil.UTF_8);
-                //ÉèÖÃresponseµÄ¸÷ÖÖÊôĞÔ
+                //è®¾ç½®responseçš„å„ç§å±æ€§
                 FullHttpResponse response = new DefaultFullHttpResponse(HttpVersion.HTTP_1_1, HttpResponseStatus.OK, content);
                 response.headers().set(HttpHeaderNames.CONTENT_TYPE, "test/plain");
                 response.headers().set(HttpHeaderNames.CONTENT_LENGTH, String.valueOf(content.readableBytes()));
 
-                //½«response·µ»Ø
+                //å°†responseè¿”å›
                 ctx.writeAndFlush(response);
 
             } else {
-                //ÉèÖÃ·µ»ØÄÚÈİ
+                //è®¾ç½®è¿”å›å†…å®¹
                 ByteBuf content = Unpooled.copiedBuffer("Hello World", CharsetUtil.UTF_8);
-                //ÉèÖÃresponseµÄ¸÷ÖÖÊôĞÔ
+                //è®¾ç½®responseçš„å„ç§å±æ€§
                 FullHttpResponse response = new DefaultFullHttpResponse(HttpVersion.HTTP_1_1, HttpResponseStatus.OK, content);
                 response.headers().set(HttpHeaderNames.CONTENT_TYPE, "test/plain");
                 response.headers().set(HttpHeaderNames.CONTENT_LENGTH, String.valueOf(content.readableBytes()));
 
-                //½«response·µ»Ø
+                //å°†responseè¿”å›
                 ctx.writeAndFlush(response);
 
             }
@@ -102,46 +102,46 @@ public class HttpServerHandler extends SimpleChannelInboundHandler<HttpObject> {
 
     @Override
     public void channelActive(ChannelHandlerContext ctx) throws Exception {
-        System.out.println("channel active --- ·½·¨±»µ÷ÓÃ");
+        System.out.println("channel active --- æ–¹æ³•è¢«è°ƒç”¨");
         super.channelActive(ctx);
     }
 
     @Override
     public void channelRegistered(ChannelHandlerContext ctx) throws Exception {
-        System.out.println("channel registered --- ·½·¨±»µ÷ÓÃ");
+        System.out.println("channel registered --- æ–¹æ³•è¢«è°ƒç”¨");
         super.channelRegistered(ctx);
     }
 
     @Override
     public void handlerAdded(ChannelHandlerContext ctx) throws Exception {
-        System.out.println("handler added --- ·½·¨±»µ÷ÓÃ");
+        System.out.println("handler added --- æ–¹æ³•è¢«è°ƒç”¨");
         super.handlerAdded(ctx);
     }
 
     @Override
     public void channelInactive(ChannelHandlerContext ctx) throws Exception {
-        System.out.println("channel inactive --- ·½·¨±»µ÷ÓÃ");
+        System.out.println("channel inactive --- æ–¹æ³•è¢«è°ƒç”¨");
         super.channelInactive(ctx);
     }
 
     @Override
     public void channelUnregistered(ChannelHandlerContext ctx) throws Exception {
-        System.out.println("channel unregistered --- ·½·¨±»µ÷ÓÃ");
+        System.out.println("channel unregistered --- æ–¹æ³•è¢«è°ƒç”¨");
         super.channelUnregistered(ctx);
     }
 
     @Override
     public void handlerRemoved(ChannelHandlerContext ctx) throws Exception {
-        System.out.println("handler removed --- ·½·¨±»µ÷ÓÃ");
+        System.out.println("handler removed --- æ–¹æ³•è¢«è°ƒç”¨");
     }
 
     /**
-     * ·¢ÉúÒì³£µ÷ÓÃ¸Ã·½·¨
+     * å‘ç”Ÿå¼‚å¸¸è°ƒç”¨è¯¥æ–¹æ³•
      */
     @Override
     public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) throws Exception {
         /*
-         * °ÑÁ¬½Ó¹Ø±Õµô
+         * æŠŠè¿æ¥å…³é—­æ‰
          */
         cause.printStackTrace();
         ctx.close();
