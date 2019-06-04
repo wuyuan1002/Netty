@@ -1,4 +1,4 @@
-package com.wuyuan.nettysocket.server;
+package com.wuyuan.nettysocketdemo.server;
 
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.ChannelFuture;

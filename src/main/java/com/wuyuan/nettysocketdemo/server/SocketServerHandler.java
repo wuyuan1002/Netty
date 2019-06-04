@@ -1,4 +1,4 @@
-package com.wuyuan.nettysocket.server;
+package com.wuyuan.nettysocketdemo.server;
 
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
@@ -20,7 +20,6 @@ public class SocketServerHandler extends SimpleChannelInboundHandler<String> {
 
         System.out.println(ctx.channel().remoteAddress() + ", " + msg);
         ctx.channel().writeAndFlush("*** from server : " + UUID.randomUUID() + " ***");
-
 
     }
 

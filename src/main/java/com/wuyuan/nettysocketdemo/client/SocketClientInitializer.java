@@ -1,4 +1,4 @@
-package com.wuyuan.nettysocket.server;
+package com.wuyuan.nettysocketdemo.client;
 
 import io.netty.channel.ChannelInitializer;
 import io.netty.channel.ChannelPipeline;
@@ -18,7 +18,7 @@ import io.netty.util.CharsetUtil;
  * @version 1.0
  * @date 2019/6/2
  */
-public class SocketServerInitializer extends ChannelInitializer<SocketChannel> {
+public class SocketClientInitializer extends ChannelInitializer<SocketChannel> {
     @Override
     protected void initChannel(SocketChannel ch) {
 
@@ -31,7 +31,7 @@ public class SocketServerInitializer extends ChannelInitializer<SocketChannel> {
         pipeline.addLast("StringEncoder", new StringEncoder(CharsetUtil.UTF_8));
 
         //传递自己定义的Handler
-        pipeline.addLast("SocketServerHandler", new SocketServerHandler());
+        pipeline.addLast("SocketClientHandler", new SocketClientHandler());
 
     }
 }
