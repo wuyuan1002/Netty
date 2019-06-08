@@ -18,6 +18,7 @@ public class SocketServerHandler extends SimpleChannelInboundHandler<String> {
     @Override
     protected void messageReceived(ChannelHandlerContext ctx, String msg) throws Exception {
 
+        Thread.sleep(500);
         System.out.println(ctx.channel().remoteAddress() + ", " + msg);
         ctx.channel().writeAndFlush("*** from server : " + UUID.randomUUID() + " ***");
 

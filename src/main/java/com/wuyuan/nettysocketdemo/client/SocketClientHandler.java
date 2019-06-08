@@ -17,7 +17,8 @@ import java.time.LocalDateTime;
 public class SocketClientHandler extends SimpleChannelInboundHandler<String> {
     @Override
     protected void messageReceived(ChannelHandlerContext ctx, String msg) throws Exception {
-
+    
+        Thread.sleep(500);
         System.out.println(ctx.channel().remoteAddress() + ", " + msg);
         ctx.channel().writeAndFlush("### client output : " + LocalDateTime.now() + " ###");
 
