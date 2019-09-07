@@ -39,7 +39,7 @@ public class WebSocketServer {
          */
         EventLoopGroup bossGroup = new NioEventLoopGroup();
         EventLoopGroup workerGroup = new NioEventLoopGroup();
-
+        
         try {
             /*
              * 用于启动服务端
@@ -49,7 +49,7 @@ public class WebSocketServer {
                     .channel(NioServerSocketChannel.class)
                     .handler(new LoggingHandler(LogLevel.INFO))
                     .childHandler(new WebSocketServerInitializer());
-
+            
             ChannelFuture channelFuture = sbs.bind(8099).sync();
             channelFuture.channel().closeFuture().sync();
         } finally {

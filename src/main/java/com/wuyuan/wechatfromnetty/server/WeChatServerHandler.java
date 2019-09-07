@@ -1,6 +1,7 @@
 package com.wuyuan.wechatfromnetty.server;
 
 import io.netty.channel.Channel;
+import io.netty.channel.ChannelFuture;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
 import io.netty.channel.group.ChannelGroup;
@@ -28,6 +29,7 @@ public class WeChatServerHandler extends SimpleChannelInboundHandler<String> {
     protected void messageReceived(ChannelHandlerContext ctx, String msg) throws Exception {
         //获取连接通道
         Channel channel = ctx.channel();
+        ChannelFuture
         //循环所有连接，判断如果是自己发的则显示【自己】，如果不是自己发的显示发送人的链接地址
         channelGroup.forEach(ch -> {
             if (channel != ch) {

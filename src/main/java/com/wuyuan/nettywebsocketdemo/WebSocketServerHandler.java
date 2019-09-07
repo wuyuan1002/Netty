@@ -15,19 +15,19 @@ public class WebSocketServerHandler extends SimpleChannelInboundHandler<TextWebS
     @Override
     protected void messageReceived(ChannelHandlerContext ctx, TextWebSocketFrame msg) throws Exception {
         System.out.println("收到消息： " + msg.text());
-        ctx.channel().writeAndFlush(new TextWebSocketFrame("服务器时间： "+ LocalDateTime.now()));
+        ctx.channel().writeAndFlush(new TextWebSocketFrame("服务器时间： " + LocalDateTime.now()));
     }
-
+    
     @Override
     public void handlerAdded(ChannelHandlerContext ctx) throws Exception {
         System.out.println("handler added id -> " + ctx.channel().id().asLongText());
     }
-
+    
     @Override
     public void handlerRemoved(ChannelHandlerContext ctx) throws Exception {
         System.out.println("handler removed id -> " + ctx.channel().id().asLongText());
     }
-
+    
     @Override
     public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) throws Exception {
         System.out.println("发生异常");
