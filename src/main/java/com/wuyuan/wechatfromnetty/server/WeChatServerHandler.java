@@ -70,7 +70,7 @@ public class WeChatServerHandler extends SimpleChannelInboundHandler<String> {
         channelGroup.writeAndFlush("[服务器] -> " + channel.remoteAddress() + "退出聊天室！\r\n");
         
         /*
-         * 将端开的连接从channelGroup中删除
+         * 将断开的连接从channelGroup中删除
          *
          * 该方法可以不写，因为当连接断掉后，netty会自动查找channelGroup把断掉的连接删掉
          */
