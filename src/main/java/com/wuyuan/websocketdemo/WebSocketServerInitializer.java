@@ -1,4 +1,4 @@
-package com.wuyuan.nettywebsocketdemo;
+package com.wuyuan.websocketdemo;
 
 import io.netty.channel.ChannelInitializer;
 import io.netty.channel.ChannelPipeline;

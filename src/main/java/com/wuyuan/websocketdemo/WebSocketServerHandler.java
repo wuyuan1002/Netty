@@ -1,4 +1,4 @@
-package com.wuyuan.nettywebsocketdemo;
+package com.wuyuan.websocketdemo;
 
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;

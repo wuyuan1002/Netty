@@ -1,9 +1,9 @@
-package com.wuyuan.nettysocketdemo.client;
+package com.wuyuan.socketdemo.server;
 
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
 
-import java.time.LocalDateTime;
+import java.util.UUID;
 
 /**
  * 通道处理器
@@ -11,29 +11,19 @@ import java.time.LocalDateTime;
  * 定义返回数据，把数据返回给客户端
  *
  * @author wuyuan
- * @version 1.0
  * @date 2019/6/2
  */
-public class SocketClientHandler extends SimpleChannelInboundHandler<String> {
-    
+public class SocketServerHandler extends SimpleChannelInboundHandler<String> {
     /**
-     * 当连接活动状态后主动向服务器端发送一个消息
-     */
-    @Override
-    public void channelActive(ChannelHandlerContext ctx) throws Exception {
-        ctx.channel().writeAndFlush("来自客户端的问候！");
-    }
-    
-    /**
-     * 接收到服务器端消息后回调 -- 输出信息并返回给服务器端一些消息
+     * 接受到客户端的数据后处理信息并向客户端返回一些数据
      */
     @Override
     protected void channelRead0(ChannelHandlerContext ctx, String msg) throws Exception {
         Thread.sleep(500);
         // 接收信息并输出
         System.out.println(ctx.channel().remoteAddress() + ", " + msg);
-        // 向服务器端返回信息
-        ctx.channel().writeAndFlush("### client output : " + LocalDateTime.now() + " ###");
+        // 向客户端返回信息
+        ctx.channel().writeAndFlush("*** from server : " + UUID.randomUUID() + " ***");
     }
     
     /**

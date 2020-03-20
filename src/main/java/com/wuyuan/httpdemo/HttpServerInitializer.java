@@ -1,4 +1,4 @@
-package com.wuyuan.nettyhttpdemo;
+package com.wuyuan.httpdemo;
 
 import io.netty.channel.ChannelInitializer;
 import io.netty.channel.ChannelPipeline;

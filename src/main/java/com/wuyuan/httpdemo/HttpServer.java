@@ -1,4 +1,4 @@
-package com.wuyuan.nettyhttpdemo;
+package com.wuyuan.httpdemo;
 
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.ChannelFuture;
