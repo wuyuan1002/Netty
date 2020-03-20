@@ -9,7 +9,6 @@ import io.netty.util.concurrent.GlobalEventExecutor;
 
 /**
  * @author wuyuan
- * @version 1.0
  * @date 2019/6/4
  */
 public class WeChatServerHandler extends SimpleChannelInboundHandler<String> {
