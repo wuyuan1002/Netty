@@ -7,7 +7,7 @@ import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
 
 /**
- * 服务端
+ * 服务端 -- 处理浏览器请求的 demo
  *
  * 任意目录下打开cmd，输入curl "http://localhost:8088" 访问
  *
