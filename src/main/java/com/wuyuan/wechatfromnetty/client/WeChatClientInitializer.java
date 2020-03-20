@@ -1,6 +1,5 @@
 package com.wuyuan.wechatfromnetty.client;
 
-import com.wuyuan.wechatfromnetty.server.WeChatServerHandler;
 import io.netty.channel.ChannelInitializer;
 import io.netty.channel.ChannelPipeline;
 import io.netty.channel.socket.SocketChannel;
@@ -12,7 +11,6 @@ import io.netty.util.CharsetUtil;
 
 /**
  * @author wuyuan
- * @version 1.0
  * @date 2019/6/4
  */
 public class WeChatClientInitializer extends ChannelInitializer<SocketChannel> {

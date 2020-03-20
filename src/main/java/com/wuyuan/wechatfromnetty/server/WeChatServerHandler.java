@@ -25,7 +25,7 @@ public class WeChatServerHandler extends SimpleChannelInboundHandler<String> {
      * 当收到消息时回调函数
      */
     @Override
-    protected void messageReceived(ChannelHandlerContext ctx, String msg) throws Exception {
+    protected void channelRead0(ChannelHandlerContext ctx, String msg) throws Exception {
         //获取连接通道
         Channel channel = ctx.channel();
         //循环所有连接，判断如果是自己发的则显示【自己】，如果不是自己发的显示发送人的链接地址

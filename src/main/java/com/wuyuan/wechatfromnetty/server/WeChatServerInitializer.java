@@ -11,13 +11,11 @@ import io.netty.util.CharsetUtil;
 
 /**
  * @author wuyuan
- * @version 1.0
  * @date 2019/6/4
  */
 public class WeChatServerInitializer extends ChannelInitializer<SocketChannel> {
     @Override
     protected void initChannel(SocketChannel ch) {
-
         ChannelPipeline pipeline = ch.pipeline();
 
         //传递netty的Handler
@@ -27,6 +25,5 @@ public class WeChatServerInitializer extends ChannelInitializer<SocketChannel> {
 
         //传递自己定义的Handler
         pipeline.addLast("WeChatServerHandler", new WeChatServerHandler());
-
     }
 }

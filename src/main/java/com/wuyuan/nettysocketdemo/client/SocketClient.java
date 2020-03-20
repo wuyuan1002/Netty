@@ -10,17 +10,19 @@ import io.netty.channel.socket.nio.NioSocketChannel;
  * 客户端
  *
  * @author wuyuan
- * @version 1.0
  * @date 2019/6/2
  */
 public class SocketClient {
     public static void main(String[] args) throws Exception {
+        // 客户端只需要一个事件循环组就可以
         EventLoopGroup eventLoopGroup = new NioEventLoopGroup();
         try {
+            // 创建客户端启动类
             Bootstrap bootstrap = new Bootstrap();
-            bootstrap.group(eventLoopGroup).channel(NioSocketChannel.class).handler(new SocketClientInitializer());
-
-            ChannelFuture channelFuture = bootstrap.connect("localhost",8089).sync();
+            bootstrap.group(eventLoopGroup)
+                    .channel(NioSocketChannel.class)
+                    .handler(new SocketClientInitializer());
+            ChannelFuture channelFuture = bootstrap.connect("localhost", 8089).sync();
             channelFuture.channel().closeFuture().sync();
         } finally {
             //优雅关闭
