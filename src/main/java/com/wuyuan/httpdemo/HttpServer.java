@@ -5,6 +5,8 @@ import io.netty.channel.ChannelFuture;
 import io.netty.channel.EventLoopGroup;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
+import io.netty.handler.logging.LogLevel;
+import io.netty.handler.logging.LoggingHandler;
 
 /**
  * 服务端 -- 处理浏览器请求的 demo
@@ -26,9 +28,12 @@ public class HttpServer {
         try {
             // 创建netty提供的用于启动服务器的类
             ServerBootstrap sbs = new ServerBootstrap();
-            // 传入事件循环组、连接通道的类型(class类 -- 之后通过反射创建channel对象)、channel初始化器
+            // 传入事件循环组、连接通道的类型(之后通过反射创建channel对象)、日志处理器、channel初始化器
+            // 这里得handler和childHandler的区别是:
+            //      handler是针对于bossGroup的处理器，childHandler是针对于workerGroup的处理器
             sbs.group(bossGroup, workerGroup)
                     .channel(NioServerSocketChannel.class)
+                    .handler(new LoggingHandler(LogLevel.INFO))
                     .childHandler(new HttpServerInitializer());
             
             // 绑定端口号
