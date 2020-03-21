@@ -5,6 +5,8 @@ import io.netty.channel.ChannelInboundHandlerAdapter;
 import io.netty.handler.timeout.IdleStateEvent;
 
 /**
+ * 空闲检测的处理器
+ *
  * @author wuyuan
  * @date 2019/6/4
  */
