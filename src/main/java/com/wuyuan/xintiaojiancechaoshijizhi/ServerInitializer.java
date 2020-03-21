@@ -18,8 +18,10 @@ public class ServerInitializer extends ChannelInitializer<SocketChannel> {
         ChannelPipeline pipeline = ch.pipeline();
         
         /*
+         * 传递netty的Handler -- 用来检测空闲事件
+         *
          * 超过7秒没有收到客户端的数据则产生读空闲事件，超过6秒没有发送给客户端数据则产生写空闲事件
-         * 超过8秒既没有收到客户端的数据也没有给客户端发送数据则产生度写空闲事件
+         * 超过8秒既没有收到客户端的数据也没有给客户端发送数据则产生读写空闲事件
          */
         pipeline.addLast("IdleStateHandler", new IdleStateHandler(7, 6, 8, TimeUnit.SECONDS));
         
