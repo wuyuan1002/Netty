@@ -21,13 +21,13 @@ public class WeChatServer {
             sbs.group(bossGroup, workerGroup)
                     .channel(NioServerSocketChannel.class)
                     .childHandler(new WeChatServerInitializer());
-
+            
             ChannelFuture channelFuture = sbs.bind(8090).sync();
             channelFuture.channel().closeFuture().sync();
         } finally {
             bossGroup.shutdownGracefully();
             workerGroup.shutdownGracefully();
         }
-
+        
     }
 }

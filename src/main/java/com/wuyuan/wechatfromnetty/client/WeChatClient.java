@@ -18,17 +18,19 @@ public class WeChatClient {
         EventLoopGroup eventLoopGroup = new NioEventLoopGroup();
         try {
             Bootstrap bootstrap = new Bootstrap();
-            bootstrap.group(eventLoopGroup).channel(NioSocketChannel.class).handler(new WeChatClientInitializer());
-
+            bootstrap.group(eventLoopGroup)
+                    .channel(NioSocketChannel.class)
+                    .handler(new WeChatClientInitializer());
+            
             Channel channel = bootstrap.connect("localhost", 8090).sync().channel();
-
+            
             BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 //            Scanner scanner = new Scanner(System.in);
-
+            
             while (true) {
                 channel.writeAndFlush(br.readLine() + "\r\n");
             }
-
+            
         } finally {
             //优雅关闭
             eventLoopGroup.shutdownGracefully();
