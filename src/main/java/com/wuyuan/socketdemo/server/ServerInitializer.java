@@ -20,6 +20,7 @@ public class ServerInitializer extends ChannelInitializer<SocketChannel> {
     @Override
     protected void initChannel(SocketChannel ch) {
         
+        // 获取放处理器的管道
         ChannelPipeline pipeline = ch.pipeline();
         
         // 传递netty的Handler -- 二进制解码器、二进制编码器、字符串解码器、字符串编码器
