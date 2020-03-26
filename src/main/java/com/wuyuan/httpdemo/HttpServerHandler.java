@@ -26,7 +26,7 @@ import java.net.URI;
 public class HttpServerHandler extends SimpleChannelInboundHandler<HttpObject> {
     
     /**
-     * 1-- 连接被添加时执行
+     * 1-- 该 handler被添加到 handlerPipeline 后被执行
      */
     @Override
     public void handlerAdded(ChannelHandlerContext ctx) throws Exception {
