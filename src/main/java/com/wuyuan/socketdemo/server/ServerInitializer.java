@@ -19,7 +19,6 @@ import io.netty.util.CharsetUtil;
 public class ServerInitializer extends ChannelInitializer<SocketChannel> {
     @Override
     protected void initChannel(SocketChannel ch) {
-        
         // 获取放处理器的管道
         ChannelPipeline pipeline = ch.pipeline();
         
